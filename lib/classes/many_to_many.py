@@ -5,12 +5,23 @@ class Article:
         self.title = title
         
 class Author:
+    all=[]
     def __init__(self, name):
-        self.name = name
-
-    def articles(self):
-        pass
-
+      if not isinstance(name,(str)):
+          raise ValueError('The name must be a string')
+      if len(name)==0:
+          raise ValueError('The name cant be less than 0 characters')
+      self.name=name
+      
+    @property
+    def name(self):
+        return self.name 
+    @name.setter
+    def name(self):
+        if hasattr(self,'name'):
+            raise AttributeError('Cannot change authors name once set')
+    
+   
     def magazines(self):
         pass
 
